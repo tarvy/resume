@@ -21,11 +21,25 @@
       }
     },
     "education": {
-      "type": "array",
-      "minItems": 2,
-      "maxItems": 2,
-      "items": {
-        "type": "string"
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "degree",
+        "institution"
+      ],
+      "properties": {
+        "degree": {
+          "type": "string"
+        },
+        "institution": {
+          "type": "string"
+        },
+        "major": {
+          "type": "string"
+        },
+        "specialization": {
+          "type": "string"
+        }
       }
     },
     "experience": {
