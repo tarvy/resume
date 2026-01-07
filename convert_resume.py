@@ -77,6 +77,43 @@ def set_table_indent(table, inches):
     tbl_ind.set(qn('w:type'), 'dxa')
 
 
+def set_table_width(table, inches):
+    """Set explicit table width."""
+    tbl_pr = table._tbl.tblPr
+    if tbl_pr is None:
+        tbl_pr = OxmlElement('w:tblPr')
+        table._tbl.insert(0, tbl_pr)
+    tbl_w = tbl_pr.find(qn('w:tblW'))
+    if tbl_w is None:
+        tbl_w = OxmlElement('w:tblW')
+        tbl_pr.append(tbl_w)
+    tbl_w.set(qn('w:w'), str(int(inches * 1440)))
+    tbl_w.set(qn('w:type'), 'dxa')
+
+
+def set_column_widths(table, widths_inches):
+    """Set column widths using tblGrid for reliable sizing."""
+    tbl = table._tbl
+    # Remove existing tblGrid if present
+    existing_grid = tbl.find(qn('w:tblGrid'))
+    if existing_grid is not None:
+        tbl.remove(existing_grid)
+
+    # Create new tblGrid
+    tbl_grid = OxmlElement('w:tblGrid')
+    for width in widths_inches:
+        grid_col = OxmlElement('w:gridCol')
+        grid_col.set(qn('w:w'), str(int(width * 1440)))
+        tbl_grid.append(grid_col)
+
+    # Insert after tblPr
+    tbl_pr = tbl.find(qn('w:tblPr'))
+    if tbl_pr is not None:
+        tbl_pr.addnext(tbl_grid)
+    else:
+        tbl.insert(0, tbl_grid)
+
+
 def set_cell_border(cell, **kwargs):
     tc = cell._tc
     tc_pr = tc.get_or_add_tcPr()
@@ -336,9 +373,22 @@ def build_docx(data, output_path):
     table = doc.add_table(rows=0, cols=3)
     table.autofit = False
     table.allow_autofit = False
-    set_table_indent(table, -0.25)
 
-    col_widths = [Inches(0.17), Inches(1.10), Inches(5.96)]
+    # Calculate available width: page width (8.5in) - margins (0.6in each side) = 7.3in
+    # Add small indent to align content nicely
+    table_indent = 0.15
+    available_width = 8.5 - 0.6 - 0.6 - table_indent  # 7.15in
+
+    set_table_indent(table, table_indent)
+    set_table_width(table, available_width)
+
+    # Column widths: small spacer, date/label column, content column
+    col1 = 0.02
+    col2 = 1.10
+    col3 = available_width - col1 - col2
+
+    set_column_widths(table, [col1, col2, col3])
+    col_widths = [Inches(col1), Inches(col2), Inches(col3)]
 
     def add_row():
         row = table.add_row()
