@@ -100,8 +100,8 @@ p {
 <td><p><em>October 2023 – Present</em></p></td>
 <td>
 <p><strong>Senior Engineering Manager, </strong><em>TubeBuddy, Provo, UT</em></p>
-<p>Goal: Grow and strengthen the TubeBuddy product by empowering functional engineering teams to achieve product-lead goals</p>
-<p>Value: Lead functional engineering teams to deliver new product capabilities and provide comprehensive support across multiple technology stacks and surfaces of the TubeBuddy product</p>
+<p>Goal: Grow and strengthen the TubeBuddy product through empowered, product-led engineering teams.</p>
+<p>Value: Lead functional teams to deliver new capabilities and maintain support across multiple technology stacks.</p>
 <p><em>My Contribution:</em></p>
 <ul class="bullet-list">
 <li>Manage multiple functional full-stack engineering teams for the TubeBuddy product</li>
