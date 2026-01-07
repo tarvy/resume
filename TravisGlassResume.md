@@ -70,7 +70,7 @@ p {
 <tr class="contact-row">
 <td></td>
 <td class="contact-cell" colspan="2">
-<div>travisrglass@gmail.com</div>
+<div>trglass@pm.me</div>
 <div>2716 16<sup>th</sup> Pl S</div>
 <div>Homewood, AL 35209<br/>(205) 382-7190</div>
 <div>www.linkedin.com/in/trglass</div>
@@ -93,7 +93,7 @@ p {
 <td></td>
 <td><p><em>October 2023 – Present</em></p></td>
 <td>
-<p><strong>Senior Engineering Manager, </strong><em>TubeBuddy, Provo, UT (Remote)</em></p>
+<p><strong>Senior Engineering Manager, </strong><em>TubeBuddy, Provo, UT</em></p>
 <p>Goal: Grow and strengthen the TubeBuddy product by empowering functional engineering teams to achieve product-lead goals</p>
 <p>Value: Lead functional engineering teams to deliver new product capabilities and provide comprehensive support across multiple technology stacks and surfaces of the TubeBuddy product</p>
 <p><em>My Contribution:</em></p>
