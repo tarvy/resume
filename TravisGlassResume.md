@@ -1,7 +1,7 @@
 <style>
 @page {
     size: letter;
-    margin: 0.5in 0.8in;
+    margin: 0.5in 0.6in;
 }
 body {
     font-family: "Times New Roman", "Times", serif;
@@ -9,7 +9,7 @@ body {
     line-height: 1.15;
     color: #000;
     margin: 0 auto;
-    padding: 0.5in 0.8in;
+    padding: 0.5in 0.6in;
     max-width: 8.5in;
 }
 .resume-table {
@@ -71,17 +71,19 @@ p {
 <td></td>
 <td class="contact-cell" colspan="2">
 <div>trglass@pm.me</div>
-<div>2716 16<sup>th</sup> Pl S</div>
+<div>2716 16th Pl S</div>
 <div>Homewood, AL 35209<br/>(205) 382-7190</div>
-<div>www.linkedin.com/in/trglass</div>
+<div><a href="https://www.linkedin.com/in/trglass">www.linkedin.com/in/trglass</a></div>
 </td>
 </tr>
 <tr class="section-row">
 <td></td>
 <td><strong>EDUCATION</strong></td>
 <td>
-<p><strong>Bachelor of Science in Commerce and Business Administration, </strong>The University of Alabama</p>
-<p><strong>Major:</strong> Management Information Systems<span class="tab"></span><strong>Specialization:</strong> Business Communications</p>
+<p><strong>Bachelor of Science in Commerce and Business Administration</strong></p>
+<p>The University of Alabama</p>
+<p><strong>Major:</strong> Management Information Systems</p>
+<p><strong>Specialization:</strong> Business Communications</p>
 </td>
 </tr>
 <tr class="section-row">

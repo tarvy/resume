@@ -23,6 +23,14 @@ MD_PATH = 'TravisGlassResume.md'
 PDF_PATH = 'TravisGlassResume.pdf'
 
 ORDINAL_RE = re.compile(r'(\d+)(st|nd|rd|th)\b')
+URL_RE = re.compile(r'(https?://[^\s]+|www\.[^\s]+)')
+
+
+def make_url(text):
+    """Ensure URL has a protocol prefix."""
+    if text.startswith('www.'):
+        return 'https://' + text
+    return text
 
 
 def load_manifest(path):
@@ -94,6 +102,38 @@ def clear_cell(cell):
             tc.remove(child)
 
 
+def add_hyperlink(paragraph, url, text):
+    """Add a hyperlink to a paragraph."""
+    part = paragraph.part
+    r_id = part.relate_to(url, 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink', is_external=True)
+
+    hyperlink = OxmlElement('w:hyperlink')
+    hyperlink.set(qn('r:id'), r_id)
+
+    new_run = OxmlElement('w:r')
+    r_pr = OxmlElement('w:rPr')
+
+    # Blue color
+    color = OxmlElement('w:color')
+    color.set(qn('w:val'), '0000FF')
+    r_pr.append(color)
+
+    # Underline
+    underline = OxmlElement('w:u')
+    underline.set(qn('w:val'), 'single')
+    r_pr.append(underline)
+
+    new_run.append(r_pr)
+
+    text_el = OxmlElement('w:t')
+    text_el.text = text
+    new_run.append(text_el)
+
+    hyperlink.append(new_run)
+    paragraph._p.append(hyperlink)
+    return hyperlink
+
+
 def apply_paragraph_format(paragraph, line_spacing=1.15):
     fmt = paragraph.paragraph_format
     fmt.space_before = Pt(0)
@@ -132,7 +172,7 @@ def add_text_runs(paragraph, text, bold=False, italic=False):
                 paragraph.add_run().add_tab()
 
 
-def render_html_text(text):
+def render_html_text(text, linkify=False):
     def render_segment(segment):
         parts = []
         last = 0
@@ -144,11 +184,26 @@ def render_html_text(text):
         parts.append(html.escape(segment[last:], quote=False))
         return ''.join(parts)
 
+    def linkify_text(text):
+        parts = []
+        last = 0
+        for match in URL_RE.finditer(text):
+            parts.append(html.escape(text[last:match.start()], quote=False))
+            url_text = match.group(1)
+            url_href = make_url(url_text)
+            parts.append(f'<a href="{html.escape(url_href)}">{html.escape(url_text, quote=False)}</a>')
+            last = match.end()
+        parts.append(html.escape(text[last:], quote=False))
+        return ''.join(parts)
+
     lines = text.split('\n')
     rendered_lines = []
     for line in lines:
         segments = line.split('\t')
-        rendered_segments = [render_segment(seg) for seg in segments]
+        if linkify:
+            rendered_segments = [linkify_text(seg) for seg in segments]
+        else:
+            rendered_segments = [render_segment(seg) for seg in segments]
         rendered_lines.append('<span class="tab"></span>'.join(rendered_segments))
     return '<br/>'.join(rendered_lines)
 
@@ -170,7 +225,7 @@ def render_html(data, include_wrapper=True):
     ])
 
     contact_lines = '\n'.join(
-        f'<div>{render_html_text(line)}</div>' for line in data['contact_lines']
+        f'<div>{render_html_text(line, linkify=True)}</div>' for line in data['contact_lines']
     )
     contact_row = '\n'.join([
         '<tr class="contact-row">',
@@ -181,41 +236,16 @@ def render_html(data, include_wrapper=True):
         '</tr>',
     ])
 
-    degree_line = data['education'][0]
-    if ', ' in degree_line:
-        degree, school = degree_line.split(', ', 1)
-        degree_html = (
-            f'<p><strong>{html.escape(degree, quote=False)}, </strong>'
-            f'{html.escape(school, quote=False)}</p>'
-        )
-    else:
-        degree_html = f'<p>{html.escape(degree_line, quote=False)}</p>'
-
-    detail_line = data['education'][1]
-    segments = detail_line.split('\t')
-    parts = []
-    for seg in segments:
-        seg = seg.strip()
-        if not seg:
-            continue
-        if ':' in seg:
-            label, value = seg.split(':', 1)
-            parts.append(
-                f'<strong>{html.escape(label, quote=False)}:</strong>'
-                f'{html.escape(value, quote=False)}'
-            )
-        else:
-            parts.append(html.escape(seg, quote=False))
-    tab_span = '<span class="tab"></span>'
-    detail_html = f'<p>{tab_span.join(parts)}</p>'
-
+    edu = data['education']
     education_row = '\n'.join([
         '<tr class="section-row">',
         '<td></td>',
         '<td><strong>EDUCATION</strong></td>',
         '<td>',
-        degree_html,
-        detail_html,
+        f'<p><strong>{html.escape(edu["degree"], quote=False)}</strong></p>',
+        f'<p>{html.escape(edu["institution"], quote=False)}</p>',
+        f'<p><strong>Major:</strong> {html.escape(edu["major"], quote=False)}</p>',
+        f'<p><strong>Specialization:</strong> {html.escape(edu["specialization"], quote=False)}</p>',
         '</td>',
         '</tr>',
     ])
@@ -292,8 +322,8 @@ def build_docx(data, output_path):
     section = doc.sections[0]
     section.top_margin = Inches(0.5)
     section.bottom_margin = Inches(0.5)
-    section.left_margin = Inches(0.8)
-    section.right_margin = Inches(0.8)
+    section.left_margin = Inches(0.6)
+    section.right_margin = Inches(0.6)
 
     name_para = doc.add_paragraph()
     name_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -326,7 +356,22 @@ def build_docx(data, output_path):
         p = contact_cell.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         apply_paragraph_format(p)
-        add_text_runs(p, line)
+        # Check if line contains a URL
+        url_match = URL_RE.search(line)
+        if url_match:
+            url_text = url_match.group(1)
+            url_href = make_url(url_text)
+            # Add text before URL if any
+            before = line[:url_match.start()]
+            if before:
+                add_text_runs(p, before)
+            add_hyperlink(p, url_href, url_text)
+            # Add text after URL if any
+            after = line[url_match.end():]
+            if after:
+                add_text_runs(p, after)
+        else:
+            add_text_runs(p, line)
 
     # Education row
     row = add_row()
@@ -338,34 +383,25 @@ def build_docx(data, output_path):
     header_run.bold = True
 
     clear_cell(row.cells[2])
-    degree_line = data['education'][0]
-    edu_p = row.cells[2].add_paragraph()
-    apply_paragraph_format(edu_p)
-    if ', ' in degree_line:
-        degree, school = degree_line.split(', ', 1)
-        add_text_runs(edu_p, f'{degree}, ', bold=True)
-        add_text_runs(edu_p, school)
-    else:
-        add_text_runs(edu_p, degree_line)
+    edu = data['education']
 
-    detail_line = data['education'][1]
-    detail_p = row.cells[2].add_paragraph()
-    apply_paragraph_format(detail_p)
-    segments = detail_line.split('\t')
-    seg_idx = 0
-    for seg in segments:
-        seg = seg.strip()
-        if not seg:
-            continue
-        if ':' in seg:
-            label, value = seg.split(':', 1)
-            add_text_runs(detail_p, f'{label}:', bold=True)
-            add_text_runs(detail_p, value)
-        else:
-            add_text_runs(detail_p, seg)
-        seg_idx += 1
-        if seg_idx < len([s for s in segments if s.strip()]):
-            detail_p.add_run().add_tab()
+    degree_p = row.cells[2].add_paragraph()
+    apply_paragraph_format(degree_p)
+    add_text_runs(degree_p, edu['degree'], bold=True)
+
+    institution_p = row.cells[2].add_paragraph()
+    apply_paragraph_format(institution_p)
+    add_text_runs(institution_p, edu['institution'])
+
+    major_p = row.cells[2].add_paragraph()
+    apply_paragraph_format(major_p)
+    add_text_runs(major_p, 'Major:', bold=True)
+    add_text_runs(major_p, f" {edu['major']}")
+
+    spec_p = row.cells[2].add_paragraph()
+    apply_paragraph_format(spec_p)
+    add_text_runs(spec_p, 'Specialization:', bold=True)
+    add_text_runs(spec_p, f" {edu['specialization']}")
 
     # Experience header row
     row = add_row()

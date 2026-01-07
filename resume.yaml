@@ -7,10 +7,12 @@
     "Homewood, AL 35209\n(205) 382-7190",
     "www.linkedin.com/in/trglass"
   ],
-  "education": [
-    "Bachelor of Science in Commerce and Business Administration, The University of Alabama",
-    "Major: Management Information Systems\t\tSpecialization: Business Communications"
-  ],
+  "education": {
+    "degree": "Bachelor of Science in Commerce and Business Administration",
+    "institution": "The University of Alabama",
+    "major": "Management Information Systems",
+    "specialization": "Business Communications"
+  },
   "experience": [
     {
       "date": "October 2023 - Present",
