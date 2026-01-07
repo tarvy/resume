@@ -94,9 +94,11 @@ p {
 <td><p><em>October 2023 – Present</em></p></td>
 <td>
 <p><strong>Senior Engineering Manager, </strong><em>TubeBuddy, Provo, UT (Remote)</em></p>
+<p>Goal: Grow and strengthen the TubeBuddy product by empowering functional engineering teams to achieve product-lead goals</p>
+<p>Value: Lead functional engineering teams to deliver new product capabilities and provide comprehensive support across multiple technology stacks and surfaces of the TubeBuddy product</p>
 <p><em>My Contribution:</em></p>
 <ul class="bullet-list">
-<li>Manage multiple functional engineering teams for the TubeBuddy product</li>
+<li>Manage multiple functional full-stack engineering teams for the TubeBuddy product</li>
 <li>Help refine and prioritize initiatives and tactically mobilize teams to research, build, and deliver solutions across a full stack of development tools and architectures</li>
 <li>Facilitate improvements to system architectures and design standards across multiple development teams</li>
 <li>Support cross-functional team members with constraints, delivery details, and design coordination</li>
@@ -109,11 +111,14 @@ p {
 <td><p><em>August 2021 – March 2025</em></p></td>
 <td>
 <p><strong>Lead Mobile Developer, </strong><em>TubeBuddy, San Diego, CA</em></p>
+<p>Goal: Create a cross-platform feature-rich mobile application that uses shared services and centralized authentication</p>
+<p>Value: Lead a functional engineering team to build and support a mobile experience that delivers integrated core capablities to a mobile surface</p>
 <p><em>My Contribution:</em></p>
 <ul class="bullet-list">
 <li>Organized and led the Mobile Engineering team at TubeBuddy</li>
 <li>Managed feature delivery, improvements, and bug resolution for the mobile application</li>
 <li>Oversaw deployments across Apple App Store and Google Play Store</li>
+<li>Owned each layer of technology that contributes to mobile functionality</li>
 </ul>
 </td>
 </tr>
