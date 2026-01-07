@@ -9,7 +9,7 @@ import html
 from copy import deepcopy
 
 from docx import Document
-from docx.shared import Inches, Pt
+from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -51,7 +51,18 @@ def load_manifest(path):
 
 
 def normalize_date(date_text):
-    return re.sub(r'\s-\s', ' \u2013 ', date_text.strip())
+    """Normalize date text: convert hyphens to en-dashes and use non-breaking spaces within dates."""
+    nbsp = '\u00A0'  # Non-breaking space
+    endash = '\u2013'  # En-dash
+    # Replace hyphen with en-dash
+    text = re.sub(r'\s-\s', f' {endash} ', date_text.strip())
+    # Replace space between month and year with non-breaking space
+    # This prevents "May 2017" from wrapping to "May\n2017"
+    months = r'(January|February|March|April|May|June|July|August|September|October|November|December)'
+    text = re.sub(months + r'\s+(\d{4})', f'\\1{nbsp}\\2', text)
+    # Also handle "Present" staying with the dash
+    text = re.sub(f'({endash})\\s+(Present)', f'\\1{nbsp}\\2', text)
+    return text
 
 
 def set_style_fonts(style, font_name, size_pt):
@@ -132,6 +143,25 @@ def set_cell_border(cell, **kwargs):
             edge_el.set(qn(f'w:{key}'), str(value))
 
 
+def set_cell_margins(cell, top=0, bottom=0, left=0, right=0):
+    """Set cell margins in inches."""
+    tc = cell._tc
+    tc_pr = tc.get_or_add_tcPr()
+    tc_mar = tc_pr.find(qn('w:tcMar'))
+    if tc_mar is None:
+        tc_mar = OxmlElement('w:tcMar')
+        tc_pr.append(tc_mar)
+
+    for side, value in [('top', top), ('bottom', bottom), ('left', left), ('right', right)]:
+        if value > 0:
+            side_el = tc_mar.find(qn(f'w:{side}'))
+            if side_el is None:
+                side_el = OxmlElement(f'w:{side}')
+                tc_mar.append(side_el)
+            side_el.set(qn('w:w'), str(int(value * 1440)))
+            side_el.set(qn('w:type'), 'dxa')
+
+
 def clear_cell(cell):
     tc = cell._tc
     for child in list(tc):
@@ -178,7 +208,8 @@ def apply_paragraph_format(paragraph, line_spacing=1.15):
     fmt.line_spacing = line_spacing
 
 
-def add_text_runs(paragraph, text, bold=False, italic=False):
+def add_text_runs(paragraph, text, bold=False, italic=False, color=None):
+    """Add text runs with optional formatting. Color should be RGB hex like '666666'."""
     lines = text.split('\n')
     for line_idx, line in enumerate(lines):
         if line_idx > 0:
@@ -192,19 +223,27 @@ def add_text_runs(paragraph, text, bold=False, italic=False):
                     run = paragraph.add_run(prefix)
                     run.bold = bold
                     run.italic = italic
+                    if color:
+                        run.font.color.rgb = RGBColor.from_string(color)
                 run = paragraph.add_run(match.group(1))
                 run.bold = bold
                 run.italic = italic
+                if color:
+                    run.font.color.rgb = RGBColor.from_string(color)
                 sup = paragraph.add_run(match.group(2))
                 sup.bold = bold
                 sup.italic = italic
                 sup.font.superscript = True
+                if color:
+                    sup.font.color.rgb = RGBColor.from_string(color)
                 last = match.end()
             tail = segment[last:]
             if tail:
                 run = paragraph.add_run(tail)
                 run.bold = bold
                 run.italic = italic
+                if color:
+                    run.font.color.rgb = RGBColor.from_string(color)
             if seg_idx < len(segments) - 1:
                 paragraph.add_run().add_tab()
 
@@ -383,8 +422,8 @@ def build_docx(data, output_path):
     set_table_width(table, available_width)
 
     # Column widths: small spacer, date/label column, content column
-    col1 = 0.02
-    col2 = 1.10
+    col1 = 0.10
+    col2 = 1.35  # Wide enough for "December 2017 –" on one line
     col3 = available_width - col1 - col2
 
     set_column_widths(table, [col1, col2, col3])
@@ -469,9 +508,10 @@ def build_docx(data, output_path):
         row = add_row()
         clear_cell(row.cells[0])
         clear_cell(row.cells[1])
+        set_cell_margins(row.cells[1], right=0.15)  # Gap between date and content
         date_p = row.cells[1].add_paragraph()
         apply_paragraph_format(date_p)
-        add_text_runs(date_p, normalize_date(job['date']), italic=True)
+        add_text_runs(date_p, normalize_date(job['date']), italic=True, color='666666')
 
         clear_cell(row.cells[2])
         title_p = row.cells[2].add_paragraph()

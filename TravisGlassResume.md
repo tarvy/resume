@@ -42,6 +42,10 @@ body {
     padding-top: 0.04in;
     padding-bottom: 0.02in;
 }
+.job-row td:nth-child(2) {
+    padding-right: 0.15in;
+    color: #666666;
+}
 p {
     margin: 0;
 }
@@ -59,8 +63,8 @@ p {
 </style>
 <table class="resume-table">
 <colgroup>
-<col style="width: 0.17in;">
-<col style="width: 1.10in;">
+<col style="width: 0.10in;">
+<col style="width: 1.35in;">
 <col style="width: auto;">
 </colgroup>
 <tr>
@@ -93,7 +97,7 @@ p {
 </tr>
 <tr class="job-row">
 <td></td>
-<td><p><em>October 2023 – Present</em></p></td>
+<td><p><em>October 2023 – Present</em></p></td>
 <td>
 <p><strong>Senior Engineering Manager, </strong><em>TubeBuddy, Provo, UT</em></p>
 <p>Goal: Grow and strengthen the TubeBuddy product by empowering functional engineering teams to achieve product-lead goals</p>
@@ -110,7 +114,7 @@ p {
 </tr>
 <tr class="job-row">
 <td></td>
-<td><p><em>August 2021 – March 2025</em></p></td>
+<td><p><em>August 2021 – March 2025</em></p></td>
 <td>
 <p><strong>Lead Mobile Developer, </strong><em>TubeBuddy, San Diego, CA</em></p>
 <p>Goal: Create a cross-platform feature-rich mobile application that uses shared services and centralized authentication</p>
@@ -126,7 +130,7 @@ p {
 </tr>
 <tr class="job-row">
 <td></td>
-<td><p><em>December 2017 – August 2021</em></p></td>
+<td><p><em>December 2017 – August 2021</em></p></td>
 <td>
 <p><strong>Full-Stack Applications Developer, </strong><em>Altec Inc., Birmingham, AL</em></p>
 <p>Goal: Create web-hosted, multi-application suite solution</p>
@@ -142,7 +146,7 @@ p {
 </tr>
 <tr class="job-row">
 <td></td>
-<td><p><em>May 2017 – August 2021</em></p></td>
+<td><p><em>May 2017 – August 2021</em></p></td>
 <td>
 <p><strong>Mobile Application Developer, </strong><em>Altec Inc., Birmingham, AL</em></p>
 <p>Goal: Create a cross-platform mobile application that mimics functionality found in multiple core business applications and processes</p>
@@ -159,7 +163,7 @@ p {
 </tr>
 <tr class="job-row">
 <td></td>
-<td><p><em>August 2016 – March 2017</em></p></td>
+<td><p><em>August 2016 – March 2017</em></p></td>
 <td>
 <p><strong>Software Developer/Team Member, </strong><em>Neptune Technology Group, Tuscaloosa, AL</em></p>
 <p>Goal: Create an Android app based on an existing iOS app using agile methodology</p>
