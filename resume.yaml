@@ -16,8 +16,10 @@
       "date": "October 2023 - Present",
       "title": "Senior Engineering Manager",
       "company": "TubeBuddy, Provo, UT (Remote)",
+      "goal": "Grow and strengthen the TubeBuddy product by empowering functional engineering teams to achieve product-lead goals",
+      "value": "Lead functional engineering teams to deliver new product capabilities and provide comprehensive support across multiple technology stacks and surfaces of the TubeBuddy product",
       "contributions": [
-        "Manage multiple functional engineering teams for the TubeBuddy product",
+        "Manage multiple functional full-stack engineering teams for the TubeBuddy product",
         "Help refine and prioritize initiatives and tactically mobilize teams to research, build, and deliver solutions across a full stack of development tools and architectures",
         "Facilitate improvements to system architectures and design standards across multiple development teams",
         "Support cross-functional team members with constraints, delivery details, and design coordination",
@@ -28,10 +30,13 @@
       "date": "August 2021 - March 2025",
       "title": "Lead Mobile Developer",
       "company": "TubeBuddy, San Diego, CA",
+      "goal": "Create a cross-platform feature-rich mobile application that uses shared services and centralized authentication",
+      "value": "Lead a functional engineering team to build and support a mobile experience that delivers integrated core capablities to a mobile surface",
       "contributions": [
         "Organized and led the Mobile Engineering team at TubeBuddy",
         "Managed feature delivery, improvements, and bug resolution for the mobile application",
-        "Oversaw deployments across Apple App Store and Google Play Store"
+        "Oversaw deployments across Apple App Store and Google Play Store",
+        "Owned each layer of technology that contributes to mobile functionality"
       ]
     },
     {
