@@ -1,0 +1,92 @@
+# yaml-language-server: $schema=resume.schema.json
+{
+  "name": "Travis Glass",
+  "contact_lines": [
+    "travisrglass@gmail.com",
+    "2716 16th Pl S",
+    "Homewood, AL 35209\n(205) 382-7190",
+    "www.linkedin.com/in/trglass"
+  ],
+  "education": [
+    "Bachelor of Science in Commerce and Business Administration, The University of Alabama",
+    "Major: Management Information Systems\t\tSpecialization: Business Communications"
+  ],
+  "experience": [
+    {
+      "date": "October 2023 - Present",
+      "title": "Senior Engineering Manager",
+      "company": "TubeBuddy, Provo, UT (Remote)",
+      "contributions": [
+        "Manage multiple functional engineering teams for the TubeBuddy product",
+        "Help refine and prioritize initiatives and tactically mobilize teams to research, build, and deliver solutions across a full stack of development tools and architectures",
+        "Facilitate improvements to system architectures and design standards across multiple development teams",
+        "Support cross-functional team members with constraints, delivery details, and design coordination",
+        "Contribute to central project strategy and assist in maintaining the product roadmap vision"
+      ]
+    },
+    {
+      "date": "August 2021 - March 2025",
+      "title": "Lead Mobile Developer",
+      "company": "TubeBuddy, San Diego, CA",
+      "contributions": [
+        "Organized and led the Mobile Engineering team at TubeBuddy",
+        "Managed feature delivery, improvements, and bug resolution for the mobile application",
+        "Oversaw deployments across Apple App Store and Google Play Store"
+      ]
+    },
+    {
+      "date": "December 2017 - August 2021",
+      "title": "Full-Stack Applications Developer",
+      "company": "Altec Inc., Birmingham, AL",
+      "goal": "Create web-hosted, multi-application suite solution",
+      "value": "Deliver functionality of business processes from a multitude of existing applications as well as newly created business applications in one centralized, accessible web application.",
+      "contributions": [
+        "Wrote and Maintained Java Spring Web-Services to support front-end code in web applications as well as mobile applications",
+        "Developed a web-based studio of updated and newly created business applications in Angular 2+ TypeScript to be compatible across multiple business departments and numerous user groups",
+        "Leveraged the Agile software development methodology to deliver business needs in a measurable and predictable manner",
+        "Improved existing application\u2019s usability and expanded feature set based on business needs and requests"
+      ]
+    },
+    {
+      "date": "May 2017 - August 2021",
+      "title": "Mobile Application Developer",
+      "company": "Altec Inc., Birmingham, AL",
+      "goal": "Create a cross-platform mobile application that mimics functionality found in multiple core business applications and processes",
+      "value": "Provide our associates the ability to access necessary business tools and processes on the go and away from a workstation",
+      "contributions": [
+        "Developed and maintained application in Xamarin C#",
+        "Managed regular releases and deployments across internal user groups",
+        "Built test deployment environment through Mobile Iron to assist with comprehensive testing and QA",
+        "Leveraged the Agile software development methodology to deliver business needs in a measurable and predictable manner",
+        "Designed local, reactive application database with Realm to handle local data storage and processing enhancement"
+      ]
+    },
+    {
+      "date": "August 2016 - March 2017",
+      "title": "Software Developer/Team Member",
+      "company": "Neptune Technology Group, Tuscaloosa, AL",
+      "goal": "Create an Android app based on an existing iOS app using agile methodology",
+      "value": "Develop an android mobile application counterpart to the client\u2019s existing iOS mobile application in a cross-platform Xamarin environment",
+      "contributions": [
+        "Cross referenced Objective-C code functionality and rebuilt it in C#",
+        "Documented full methodology throughout the process to effectively communicate progress to client and setup project to be maintained in the future (product backlog, external review board, and developer board)",
+        "Improved existing application\u2019s usability and expanded feature set"
+      ]
+    }
+  ],
+  "technical_experience": [
+    {
+      "label": "Frameworks and Languages",
+      "details": "React, React Native, TypeScript, Javascript, Angular, Maui, .NET, Razor, SQL, Entity Framework, Spring, Hibernate, C#, Java, CSS, HTML, PLSQL"
+    },
+    {
+      "label": "Operating Environments",
+      "details": "MS Windows, Apple OSX, Apple IOS, Android",
+      "hanging_indent": true
+    },
+    {
+      "label": "Business Tools",
+      "details": "Visual Studio, VS Code, Rider, PyCharm, Expo, Android Studio, Amplitude, Segment, MS SQL Server, Mobile Iron"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+<style>
+@page {
+    size: letter;
+    margin: 0.5in 0.8in;
+}
+body {
+    font-family: "Times New Roman", "Times", serif;
+    font-size: 11pt;
+    line-height: 1.15;
+    color: #000;
+    margin: 0 auto;
+    padding: 0.5in 0.8in;
+    max-width: 8.5in;
+}
+.resume-table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+.name-cell {
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 0.08in;
+}
+.resume-table td {
+    vertical-align: top;
+    padding: 0;
+}
+.contact-cell {
+    text-align: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.08in;
+}
+.contact-cell div {
+    margin: 0;
+}
+.section-row td {
+    padding-top: 0.04in;
+}
+.job-row td {
+    padding-top: 0.04in;
+    padding-bottom: 0.02in;
+}
+p {
+    margin: 0;
+}
+.bullet-list {
+    margin: 0.02in 0 0 0;
+    padding-left: 0.25in;
+}
+.bullet-list li {
+    margin: 0;
+}
+.tab {
+    display: inline-block;
+    width: 0.5in;
+}
+</style>
+<table class="resume-table">
+<colgroup>
+<col style="width: 0.17in;">
+<col style="width: 0.95in;">
+<col style="width: auto;">
+</colgroup>
+{{NAME_ROW}}
+{{CONTACT_ROW}}
+{{EDUCATION_ROW}}
+{{EXPERIENCE_HEADER_ROW}}
+{{EXPERIENCE_ROWS}}
+{{TECHNICAL_ROW}}
+</table>

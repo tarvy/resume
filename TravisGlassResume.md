@@ -1,0 +1,177 @@
+<style>
+@page {
+    size: letter;
+    margin: 0.5in 0.8in;
+}
+body {
+    font-family: "Times New Roman", "Times", serif;
+    font-size: 11pt;
+    line-height: 1.15;
+    color: #000;
+    margin: 0 auto;
+    padding: 0.5in 0.8in;
+    max-width: 8.5in;
+}
+.resume-table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+.name-cell {
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 0.08in;
+}
+.resume-table td {
+    vertical-align: top;
+    padding: 0;
+}
+.contact-cell {
+    text-align: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.08in;
+}
+.contact-cell div {
+    margin: 0;
+}
+.section-row td {
+    padding-top: 0.04in;
+}
+.job-row td {
+    padding-top: 0.04in;
+    padding-bottom: 0.02in;
+}
+p {
+    margin: 0;
+}
+.bullet-list {
+    margin: 0.02in 0 0 0;
+    padding-left: 0.25in;
+}
+.bullet-list li {
+    margin: 0;
+}
+.tab {
+    display: inline-block;
+    width: 0.5in;
+}
+</style>
+<table class="resume-table">
+<colgroup>
+<col style="width: 0.17in;">
+<col style="width: 0.95in;">
+<col style="width: auto;">
+</colgroup>
+<tr>
+<td></td>
+<td class="name-cell" colspan="2">Travis Glass</td>
+</tr>
+<tr class="contact-row">
+<td></td>
+<td class="contact-cell" colspan="2">
+<div>travisrglass@gmail.com</div>
+<div>2716 16<sup>th</sup> Pl S</div>
+<div>Homewood, AL 35209<br/>(205) 382-7190</div>
+<div>www.linkedin.com/in/trglass</div>
+</td>
+</tr>
+<tr class="section-row">
+<td></td>
+<td><strong>EDUCATION</strong></td>
+<td>
+<p><strong>Bachelor of Science in Commerce and Business Administration, </strong>The University of Alabama</p>
+<p><strong>Major:</strong> Management Information Systems<span class="tab"></span><strong>Specialization:</strong> Business Communications</p>
+</td>
+</tr>
+<tr class="section-row">
+<td></td>
+<td><em><strong>EXPERIENCE</strong></em></td>
+<td></td>
+</tr>
+<tr class="job-row">
+<td></td>
+<td><p><em>October 2023 – Present</em></p></td>
+<td>
+<p><strong>Senior Engineering Manager, </strong><em>TubeBuddy, Provo, UT (Remote)</em></p>
+<p><em>My Contribution:</em></p>
+<ul class="bullet-list">
+<li>Manage multiple functional engineering teams for the TubeBuddy product</li>
+<li>Help refine and prioritize initiatives and tactically mobilize teams to research, build, and deliver solutions across a full stack of development tools and architectures</li>
+<li>Facilitate improvements to system architectures and design standards across multiple development teams</li>
+<li>Support cross-functional team members with constraints, delivery details, and design coordination</li>
+<li>Contribute to central project strategy and assist in maintaining the product roadmap vision</li>
+</ul>
+</td>
+</tr>
+<tr class="job-row">
+<td></td>
+<td><p><em>August 2021 – March 2025</em></p></td>
+<td>
+<p><strong>Lead Mobile Developer, </strong><em>TubeBuddy, San Diego, CA</em></p>
+<p><em>My Contribution:</em></p>
+<ul class="bullet-list">
+<li>Organized and led the Mobile Engineering team at TubeBuddy</li>
+<li>Managed feature delivery, improvements, and bug resolution for the mobile application</li>
+<li>Oversaw deployments across Apple App Store and Google Play Store</li>
+</ul>
+</td>
+</tr>
+<tr class="job-row">
+<td></td>
+<td><p><em>December 2017 – August 2021</em></p></td>
+<td>
+<p><strong>Full-Stack Applications Developer, </strong><em>Altec Inc., Birmingham, AL</em></p>
+<p>Goal: Create web-hosted, multi-application suite solution</p>
+<p>Value: Deliver functionality of business processes from a multitude of existing applications as well as newly created business applications in one centralized, accessible web application.</p>
+<p><em>My Contribution:</em></p>
+<ul class="bullet-list">
+<li>Wrote and Maintained Java Spring Web-Services to support front-end code in web applications as well as mobile applications</li>
+<li>Developed a web-based studio of updated and newly created business applications in Angular 2+ TypeScript to be compatible across multiple business departments and numerous user groups</li>
+<li>Leveraged the Agile software development methodology to deliver business needs in a measurable and predictable manner</li>
+<li>Improved existing application’s usability and expanded feature set based on business needs and requests</li>
+</ul>
+</td>
+</tr>
+<tr class="job-row">
+<td></td>
+<td><p><em>May 2017 – August 2021</em></p></td>
+<td>
+<p><strong>Mobile Application Developer, </strong><em>Altec Inc., Birmingham, AL</em></p>
+<p>Goal: Create a cross-platform mobile application that mimics functionality found in multiple core business applications and processes</p>
+<p>Value: Provide our associates the ability to access necessary business tools and processes on the go and away from a workstation</p>
+<p><em>My Contribution:</em></p>
+<ul class="bullet-list">
+<li>Developed and maintained application in Xamarin C#</li>
+<li>Managed regular releases and deployments across internal user groups</li>
+<li>Built test deployment environment through Mobile Iron to assist with comprehensive testing and QA</li>
+<li>Leveraged the Agile software development methodology to deliver business needs in a measurable and predictable manner</li>
+<li>Designed local, reactive application database with Realm to handle local data storage and processing enhancement</li>
+</ul>
+</td>
+</tr>
+<tr class="job-row">
+<td></td>
+<td><p><em>August 2016 – March 2017</em></p></td>
+<td>
+<p><strong>Software Developer/Team Member, </strong><em>Neptune Technology Group, Tuscaloosa, AL</em></p>
+<p>Goal: Create an Android app based on an existing iOS app using agile methodology</p>
+<p>Value: Develop an android mobile application counterpart to the client’s existing iOS mobile application in a cross-platform Xamarin environment</p>
+<p><em>My Contribution:</em></p>
+<ul class="bullet-list">
+<li>Cross referenced Objective-C code functionality and rebuilt it in C#</li>
+<li>Documented full methodology throughout the process to effectively communicate progress to client and setup project to be maintained in the future (product backlog, external review board, and developer board)</li>
+<li>Improved existing application’s usability and expanded feature set</li>
+</ul>
+</td>
+</tr>
+<tr class="section-row">
+<td></td>
+<td><strong>TECHNICAL EXPERIENCE</strong></td>
+<td>
+<p><strong>Frameworks and Languages:</strong> React, React Native, TypeScript, Javascript, Angular, Maui, .NET, Razor, SQL, Entity Framework, Spring, Hibernate, C#, Java, CSS, HTML, PLSQL</p>
+<p style="margin-left: 0.50in; text-indent: -0.50in;"><strong>Operating Environments:</strong> MS Windows, Apple OSX, Apple IOS, Android</p>
+<p><strong>Business Tools:</strong> Visual Studio, VS Code, Rider, PyCharm, Expo, Android Studio, Amplitude, Segment, MS SQL Server, Mobile Iron</p>
+</td>
+</tr>
+</table>

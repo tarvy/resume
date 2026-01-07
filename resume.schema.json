@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Resume Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "contact_lines",
+    "education",
+    "experience",
+    "technical_experience"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "contact_lines": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "education": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "date",
+          "title",
+          "company",
+          "contributions"
+        ],
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "contributions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "technical_experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "details"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
+          },
+          "hanging_indent": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
